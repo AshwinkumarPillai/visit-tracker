@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Visit = require("../models/visitModel");
-const crypto = require("crypto");
+import { v4 as uuidv4 } from "uuid";
 
 // Middleware for cookies
 const cookieParser = require("cookie-parser");
@@ -17,7 +17,7 @@ router.post("/visit", async (req, res) => {
     // Generate or retrieve userId
     let userId = req.cookies.userId;
     if (!userId) {
-      userId = crypto.randomUUID();
+      userId = uuidv4();
       res.cookie("userId", userId, { maxAge: 30 * 24 * 60 * 60 * 1000 }); // 30 days
     }
 
