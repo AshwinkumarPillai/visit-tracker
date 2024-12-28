@@ -2,10 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const visitRoutes = require("./routes/visitRoutes");
+const visitRoutes = require("./routes/visit.routes");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3200;
 
 // Middleware
 app.use(express.json());
@@ -22,4 +22,8 @@ mongoose
   .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 // Start the server
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+try {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+} catch (error) {
+  console.log(error);
+}

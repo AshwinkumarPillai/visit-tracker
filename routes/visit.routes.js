@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Visit = require("../models/visitModel");
-import { v4 as uuidv4 } from "uuid";
+const Visit = require("../models/visit");
+const { v4: uuidv4 } = require("uuid");
 
 // Middleware for cookies
 const cookieParser = require("cookie-parser");
